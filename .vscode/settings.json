@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "pretty_effect.h": "c",
+        "gpio.h": "c"
+    }
+}
