@@ -30,7 +30,7 @@ int   Tank_Level        = 0; // 0 = empty, 1 = low, 2 = full
 #define BUTTON_PIN_BITMASK(GPIO) (1ULL << GPIO) // 2 ^ GPIO_NUMBER in hex
 uint64_t bitmask = BUTTON_PIN_BITMASK(Button_Pins[0]) | BUTTON_PIN_BITMASK(Button_Pins[1]) | BUTTON_PIN_BITMASK(Button_Pins[2]);
 
-uint32_t time_awake;
+uint32_t wakeup_time;
 
 void print_GPIO_wake_up(){
     Serial.print("GPIO that triggered the wake up: GPIO ");
@@ -62,7 +62,7 @@ void wakeup_routine(){
   delay(50); //Take some time to open up the Serial Monitor
 
   // Time recorded after waking up
-  uint32_t time_awake = millis();
+  uint32_t wakeup_time = millis();
 
   pinMode(LCD_LED, OUTPUT);
   pinMode(Moisture_Pin, INPUT);
@@ -113,7 +113,7 @@ void setup()
 
 void loop()
 {
-  if ( millis() - time_awake >= wake_time * 1e3 )
+  if ( millis() - wakeup_time >= wake_time * 1e3 )
   {
     prepare_sleep();
     esp_deep_sleep_start();
