@@ -3,7 +3,7 @@
 //=============================
 // GPIO pin configuration
 //=============================
-extern const int LightSens_Pins[3]; 
+extern const int LightSens_Pins[2];    // Light sensor pins [Analog read pin, Voltage supply pin]
 extern const int Water_Pins[3]; // Water tank pins [3.3V OUTPUT, min lvl INPUT, max lvl INPUT]
 extern const int Moisture_Pin;           
 extern const int Battery_Pin;           

@@ -50,7 +50,9 @@ void display_notification(){
     if ( Battery_Voltage < 2.2 ) 
     {
         tft.fillScreen(TFT_RED);
-        tft.drawString("Low Power. Please replace batteries.", 10, 120);
+        tft.setTextColor(TFT_WHITE, TFT_RED);
+        tft.drawString("Low Power.", 100, 100);
+        tft.drawString("Please replace batteries.", 10, 140);
     }
     else if ( Moisture_Level < 0.2 ) 
     {
@@ -62,11 +64,14 @@ void display_notification(){
     }
     else if ( Tank_Level <= 1 ) 
     {
-        tft.drawString("Water tank is empty. Please refill.", 10, 120);
+        tft.fillScreen(TFT_BLUE);
+        tft.setTextColor(TFT_WHITE, TFT_BLUE);
+        tft.drawString("Water tank is empty.", 40, 100);
+        tft.drawString("Please refill.", 70, 140);
     }
     else
     {
-        TJpgDec.drawFsJpg(0, 0, "happyflower.jpg");
+        TJpgDec.drawFsJpg(0, 0, "/happyflower.jpg");
     }
     digitalWrite(LCD_LED, HIGH);
 }

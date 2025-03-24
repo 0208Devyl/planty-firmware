@@ -3,20 +3,19 @@
 #include "driver/rtc_io.h"
 #include "soc/rtc_cntl_reg.h"
 #include "soc/rtc.h"
-#include "TJpg_Decoder.h"
 #define FS_NO_GLOBALS
-#include "FS.h"
-#include "SPIFFS.h"
-#include "SPI.h"
-#include "TFT_eSPI.h"
-
+//#include "FS.h"
+//#include "SPIFFS.h"
+//#include "SPI.h"
+//#include "TFT_eSPI.h"
+//#include "TJpg_Decoder.h"
 
 // Project specific includes
 #include "hardware_config.h"
 #include "data_handling.h"
 #include "lcd_gfx.h"
 
-const int LightSens_Pins[3] = {12, 14, 27}; 
+const int LightSens_Pins[2] = {12, 14};     // Light sensor pins [Analog read pin, Voltage supply pin]
 const int Water_Pins[3]     = {33, 25, 26}; // Water tank pins [3.3V OUTPUT, min lvl INPUT, max lvl INPUT]
 const int Moisture_Pin      = 13;           
 const int Battery_Pin       = 34;           
@@ -68,8 +67,7 @@ void wakeup_routine(){
   pinMode(LCD_LED, OUTPUT);
   pinMode(Moisture_Pin, INPUT);
   pinMode(LightSens_Pins[0], INPUT);
-  pinMode(LightSens_Pins[1], INPUT);
-  pinMode(LightSens_Pins[2], INPUT);
+  pinMode(LightSens_Pins[1], OUTPUT);
   pinMode(Water_Pins[0], OUTPUT);
   pinMode(Water_Pins[1], INPUT);
   pinMode(Water_Pins[2], INPUT);
